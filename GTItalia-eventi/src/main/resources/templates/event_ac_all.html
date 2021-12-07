@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+	rel='stylesheet'>
+<title>Event Ac All</title>
+</head>
+<body>
+	<table class="table">
+	<tr>
+	<th>Nome evento: </th>
+	<th>Data: </th>
+	<th>Auto: </th>
+	<th>Circuito: </th>
+	</tr>
+		<tr th:each="event:${list}">
+		<td>
+			<a th:href="@{/eventAc/{name}(name=${event.nome})}">
+			<span th:text="${event.nome}"></span>
+			</a>
+		</td>
+		<td><span th:text="${event.date}"></span></td>
+		<td><span th:text="${event.car}"></span>
+		<td><span th:text="${event.track.nome}"></span></td>
+		</tr>
+			</table>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+	rel='stylesheet'>
+<title>Event Ac</title>
+</head>
+<body>
+		<h1 class="h1" th:text="${event.nome}"></h1>
+		<span th:text="${event.description}"></span><br><br>
+		<p><b>Attenzione!</b><br>
+		L'Evento è a numero chiuso!<br>
+		
+		Posti disponibili: <span th:text="${event.numberOfPlaces}"></span><br>
+		Solo nel caso del raggiungimento di <span th:text="${event.maxNumberOfPlaces}"></span> o più iscrizioni, saranno formate 2 o più stanze di gioco!
+		</p>
+		<hr><br>
+		<p>
+		Vetture ammesse: <span th:text="${event.car}"></span><br>
+		Elaborazione auto: Libera<br>
+		Gomme: Scelta libera<br>
+		</p><hr><br>
+		
+		<table class="table"><tr><th>Aiuti ammessi: </th></tr>
+		<tr><td>TC: </td>
+		<td><span th:text="${event.tractionControl}"></span></td></tr>
+		<tr><td>ABS: </td>
+		<td><span th:text="${event.abs}"></span></td></tr>
+		<tr><td>Frizione automatica: </td>
+		<td><span th:text="${event.autoClutch}"></span></td></tr>
+		<tr><td>Controllo stabilità: </td>
+		<td><span th:text="${event.stabilityControl}"></span></td></tr>
+		<tr><td>Termocoperte: </td>
+		<td><span th:text="${event.electricBlankets}"></span></td></tr></table>
+		<hr><br>
+		<b>Circuito: </b><br>
+		<table class="table">
+		<tr>
+			<th><span th:text="${event.track.nome}"></span></th>
+			<th><img alt="immagine circuito" th:src="${event.track.urlPhoto}" width="15%">
+		</tr></table>
+		<table class="table"><tr>
+		<th>Durata prove libere:</th>
+		<th>Durata qualifiche:</th>
+		<th>Durata gara: </th><tr>
+		<td><span th:text="${event.practiceSession}"></span>&nbsp;Minuti</td>
+		<td><span th:text="${event.qualifyingSession}"></span>&nbsp;Minuti</td>
+		<td><span th:text="${event.laps}"></span>&nbsp;Giri</td>
+		</table>
+		
+		<table class="table">
+			<tr>
+				<th>Orario Virtuale</th>
+				<th>Meteo</th>
+				<th>Temperatura ambiente</th>
+				<th>Superficie del tracciato</th>				
+			</tr>
+			<tr>
+				<td><span th:text="${event.hours}"></span></td>
+				<td><span th:text="${event.meteo}"></span></td>
+				<td><span th:text="${event.ambientTemperature}"></span></td>
+				<td><span th:text="${event.grip}"></span></td>
+			</tr>		
+		</table>
+		<table class="table">
+			<tr>
+				<th>Tempo limite di Qualifiche</th>
+				<th>Attesa per la partenza</th>
+				<th>Tipo di Partenza</th>				
+			</tr>
+			<tr>
+				<td><span th:text="${event.qualifyingTimeLimit}"></span></td>
+				<td><span th:text="${event.waitingForDeparture}"></span></td>
+				<td><span th:text="${event.tipoPartenza}"></span></td>
+			</tr>		
+		</table>
+		<br>
+		<span th:text="${event.tutorialPartenza}"></span>
+		<table class="table">
+			<tr>
+				<th>Ruote permesse oltre il tracciato</th>
+				<th>Consumo Gomme</th>
+				<th>Consumo Carburante</th>		
+				<th>Danni meccanici</th>				
+			</tr>
+			<tr>
+				<td><span th:text="${event.wheelsOverTrack}"></span></td>
+				<td><span th:text="${event.tireWear}"></span>%</td>
+				<td><span th:text="${event.fuelConsumption}"></span>%</td>
+				<td><span th:text="${event.damageRate}"></span>%</td>
+			</tr>		
+		</table>
+		<hr>
+		<table class="table">
+			<tr><th>Codice di condotta</th></tr>
+			<tr><td>Prima di partecipare all'evento, leggi attentamente il <a href="https://www.gtitalia.it/regolamenti/5182-codice-di-condotta.html">codice di condotta</a> </td></tr>
+			<tr><th>Reclami</th></tr>
+			<tr><td> I Reclami dovranno essere sottoposti alla DG compilando <a href="https://docs.google.com/forms/d/e/1FAIpQLSchmS8IGMYcj-x8KOqHZAfDzzenA9bhU8__HQXh07YTRQqERQ/viewform">l'apposito Form</a> in tutte le sue parti.</td></tr>
+			<tr><th>MODIFICHE AL REGOLAMENTO DI GARA</th></tr>
+			<tr><td>L'Organizzazione si riserva il diritto di decidere in assoluta libertà per quanto non espressamente regolato in questo documento, il quale può essere modificato in qualsiasi momento, anche con valore retroattivo (in quel caso ne sarà data tempestiva comunicazione).</td></tr>
+			<tr><th>COMUNICAZIONE CON GLI ALTRI PARTECIPANTI</th></tr>
+			<tr><td>La password per entrare in stanza verrà comunicata esclussivamente tramite il canale vocale Discord</td></tr>						
+		</table>
+		
+</body>
+</html>

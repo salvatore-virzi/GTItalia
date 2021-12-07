@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+	rel='stylesheet'>
+<title>Create Event Ac</title>
+</head>
+<body>
+	<h3><b>Nuovo Evento</b></h3>
+	<form method="post" action="/eventAc/create" th:object="${eventGeneric}">
+	<table class="table">
+		<tr>
+			<td>
+				<label>Nome Evento:</label>
+			</td>
+			<td>
+				<input type="text" name="nome" required="required" />
+			</td>
+		</tr>	
+		<tr>
+			<td>
+				<label>Data Evento:</label>
+			</td>
+			<td>
+				<input type="date" name="date" required="required" />
+			</td>
+		</tr>
+		<tr>
+			<td>Descrizone</td>
+			<td><input type="text" name="description"/></td>
+		</tr>
+		<tr>
+			<td>
+				<label>Password:</label>
+			</td>
+			<td>
+				<input name="password" required="required" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Numero di posti disponibili:</label>
+			</td>
+			<td>
+				<input type="number" name="numberOfPlaces" value="16" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Numero di posti minimo per creare due stanze:</label>
+			</td>
+			<td>
+				<input type="number" name="maxNumberOfPlaces" value="27" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Circuito:</label>
+			</td>
+			<td>
+			<select name="track">
+				<option  th:each="item: ${track} ?: Null" th:value="${item.nome} ?: Null" th:text="${item.nome} ?: Null" > 
+			</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Auto:</label>
+			</td>
+			<td><details>
+				<summary>Lista Auto: </summary>	
+						<table>
+							<tr th:each="item: ${car}">
+								<td><input type="checkbox" name="cars" th:value="${item.model}" th:text="${item.getName}"/></td>
+							</tr>
+						</table>
+				</details>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Sessione di pratica:</label>
+			</td>
+			<td>
+				<input type="number" name="practiceSession"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Sessione di qualifica:</label>
+			</td>
+			<td>
+				<input type="number" name="qualifyingSession"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Giri:</label>
+			</td>
+			<td>
+				<input type="number" name="laps"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Attesa partenza:</label>
+			</td>
+			<td>
+				<input type="number" name="laps"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Ora:</label>
+			</td>
+			<td>
+				<input type="time" name="hours"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Attesa per la partenza:</label>
+			</td>
+			<td>
+				<input type="number" name="waitingForDeparture"/>
+			</td>
+		</tr>
+			<tr>
+			<td>Tipo Partenza : </td>
+			<td>
+				<select name="tipoPartenza" >
+					<option value="PARTENZA_DA_FERMO">PARTENZA DA FERMO</option>
+					<option value="PARTENZA_LANCIATA">PARTENZA LANCIATA</option>
+					<option value="PARTENZA_DA_FERMO_A_GRIGLIA_INVERTITA">PARTENZA DA FERMO A GRIGLIA INVERTITA</option>
+					<option value="PARTENZA_LANCIATA_A_GRIGLIA_INVERTITA">PARTENZA LANCIATA A GRIGLIA INVERTITA</option>							
+				</select>
+			</td>
+		<tr>
+		<tr>
+			<td>Meteo: </td>
+			<td>
+				<select name="meteo" >
+					<option value="NEBBIA_FITTA">NEBBIA FITTA</option>
+					<option value="FOSCHIA">FOSCHIA</option>
+					<option value="SERENO">SERENO</option>
+					<option value="POCO_NUVOLOSO">POCO NUVOLOSO</option>
+					<option value="PARZIALMENTE_NUVOLOSO">PARZIALMENTE NUVOLOSO</option>
+					<option value="NUVOLOSO">NUVOLOSO</option>
+					<option value="MOLTO_NUVOLOSO">MOLTO_NUVOLOSO</option>								
+				</select>
+			</td>
+		<tr>
+			<td>
+				<label>Temperatura Ambiente:</label>
+			</td>
+			<td>
+				<input type="number" name="ambientTemperature"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Grip: </td>
+			<td>
+				<select name="grip" >
+					<option value="OPTIMUM">OPTIMUM</option>
+					<option value="FAST">FAST</option>
+					<option value="GREEN">GREEN</option>
+					<option value="SLOW">SLOW</option>
+					<option value="OLD">OLD</option>
+					<option value="DUSTY">DUSTY</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Frizione automatica: </td>
+			<td>
+				<select name="autoClutch">
+					<option value="true">ACCESO</option>
+					<option value="false">SPENTO</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Controllo Trazione: </td>
+			<td>
+				<select name="tractionControl">
+					<option value="SPENTO">SPENTO</option>
+					<option value="DI_SERIE">DI SERIE</option>
+					<option value="ACCESO">ACCESO</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>ABS: </td>
+			<td>
+				<select name="abs" >
+					<option value="SPENTO">SPENTO</option>
+					<option value="DI_SERIE">DI SERIE</option>
+					<option value="ACCESO">ACCESO</option>
+				</select>
+			</td>
+		</tr>	
+			<tr>
+			<td>Controllo stabilità: </td>
+			<td>
+				<select name="stabilityControl" >
+					<option value="false">SPENTO</option>
+					<option value="true">ACCESO</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Termocoperte: </td>
+			<td>
+				<select name="electricBlankets">
+					<option value="true">ACCESO</option>
+					<option value="false">SPENTO</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Consumo carburante:</label>
+			</td>
+			<td>
+				<input type="number" name="fuelConsumption"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Danni:</label>
+			</td>
+			<td>
+				<input type="number" name="damageRate"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Usura dei pneumatici:</label>
+			</td>
+			<td>
+				<input type="number" name="tireWear"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Ruote consentito oltre il tracciato:</label>
+			</td>
+			<td>
+				<input type="number" name="wheelsOverTrack"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Tempo limite qualifica:</label>
+			</td>
+			<td>
+				<input type="number" name="qualifyingTimeLimit"/>
+			</td>
+		</tr>
+	</table>
+			<hr>
+		<input type="submit" value="CREA!">
+	</form>
+	
+	</form>
+</body>
+</html>

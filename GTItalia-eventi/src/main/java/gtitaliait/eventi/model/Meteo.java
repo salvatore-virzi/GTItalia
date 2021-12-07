@@ -1,0 +1,5 @@
+package gtitaliait.eventi.model;
+
+public enum Meteo {
+	NEBBIA_FITTA, FOSCHIA, SERENO, POCO_NUVOLOSO, PARZIALMENTE_NUVOLOSO, NUVOLOSO, MOLTO_NUVOLOSO;
+}
